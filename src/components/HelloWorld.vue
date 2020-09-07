@@ -1,33 +1,34 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <span>{{ counter }}</span>
-    <div @click="inc">CLICK ME</div>
+    <span>{{ status }}</span>
+    <!-- <div @click="inc">CLICK ME</div> -->
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
-import { ActionTypes, MutationTypes, useStore } from '../store';
+import { ActionTypes } from '@/store/auth';
+import { defineComponent } from 'vue';
+// import { createNamespacedHelpers } from 'vuex';
+import { store } from '../store';
 
 export default defineComponent({
     name: 'HelloWorld',
     props: {
         msg: String,
     },
-    setup() {
-        const store = useStore();
-        const counter = computed(() => store.state.counter);
-        const inc = () => {
-            store.commit(MutationTypes.INC_COUNTER, 1);
-        };
-        const inc2 = () => {
-            store.dispatch(ActionTypes.INC_COUNTER, 3);
-        };
+    async setup() {
+        const mystore = store;
+        const status = await mystore.state.dispatch(ActionTypes.CHECK_CREDENTIALS, { name: 'John', password: 'Doe' });
+        // const counter = computed(() => store.state.counter);
+        // const inc = () => {
+        //     store.commit(MutationTypes.INC_COUNTER, 1);
+        // };
+        // const inc2 = () => {
+        //     store.dispatch(ActionTypes.INC_COUNTER, 3);
+        // };
         return {
-            inc,
-            inc2,
-            counter,
+            status,
         };
     },
 });
