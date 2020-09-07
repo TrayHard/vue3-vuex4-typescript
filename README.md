@@ -1,4 +1,4 @@
-# interra-test
+# vue3-vuex4-typescript-boilerplate
 
 ## Project setup
 ```
