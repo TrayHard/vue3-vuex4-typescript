@@ -48,7 +48,12 @@
     },
     "plugins": ["only-warn"],
     "rules": {
-      "indent": ["warn", 4]
+      "indent": ["warn", 4],
+      "linebreak-style": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/ban-ts-ignore": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "spaced-comment": "off"
     }
   },
   "browserslist": [
