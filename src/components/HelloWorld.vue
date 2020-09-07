@@ -2,30 +2,34 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <span>{{ counter }}</span>
-    <button @click="inc"></button>
+    <div @click="inc">CLICK ME</div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useStore } from 'vuex';
+import { computed, defineComponent } from 'vue';
+import { ActionTypes, MutationTypes, useStore } from '../store';
 
 export default defineComponent({
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
-  setup() {
-    const store = useStore();
-    const counter = ref(store.state);
-    const inc = () => {
-      store.commit('increment');
-    };
-    return {
-      inc,
-      counter,
-    };
-  },
+    name: 'HelloWorld',
+    props: {
+        msg: String,
+    },
+    setup() {
+        const store = useStore();
+        const counter = computed(() => store.state.counter);
+        const inc = () => {
+            store.commit(MutationTypes.INC_COUNTER, 1);
+        };
+        const inc2 = () => {
+            store.dispatch(ActionTypes.INC_COUNTER, 3);
+        };
+        return {
+            inc,
+            inc2,
+            counter,
+        };
+    },
 });
 </script>
 

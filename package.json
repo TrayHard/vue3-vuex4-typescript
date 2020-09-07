@@ -47,7 +47,9 @@
       "ecmaVersion": 2020
     },
     "plugins": ["only-warn"],
-    "rules": {}
+    "rules": {
+      "indent": ["warn", 4]
+    }
   },
   "browserslist": [
     "> 1%",
