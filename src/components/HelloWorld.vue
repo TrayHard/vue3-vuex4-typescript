@@ -2,14 +2,12 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <span>{{ status }}</span>
-    <!-- <div @click="inc">CLICK ME</div> -->
   </div>
 </template>
 
 <script lang="ts">
 import { ActionTypes } from '@/store/auth';
 import { defineComponent } from 'vue';
-// import { createNamespacedHelpers } from 'vuex';
 import { store } from '../store';
 
 export default defineComponent({
@@ -19,14 +17,10 @@ export default defineComponent({
     },
     async setup() {
         const mystore = store;
-        const status = await mystore.state.dispatch(ActionTypes.CHECK_CREDENTIALS, { name: 'John', password: 'Doe' });
-        // const counter = computed(() => store.state.counter);
-        // const inc = () => {
-        //     store.commit(MutationTypes.INC_COUNTER, 1);
-        // };
-        // const inc2 = () => {
-        //     store.dispatch(ActionTypes.INC_COUNTER, 3);
-        // };
+        await mystore.dispatch(ActionTypes.CHECK_CREDENTIALS, { name: 'John', password: 'Doe' });
+        console.log(mystore.state.auth.isLoggedIn);
+        // console.log((mystore.state.auth as any).isLoggedIn);
+        // const status = mystore.state.auth.getters.showLoggedStatus;
         return {
             status,
         };

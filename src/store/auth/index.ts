@@ -28,7 +28,7 @@ export type AuthStore = {
 };
 
 //@ts-ignore
-const AuthStore: Module<AuthState, any> = {
+const authModule: Module<AuthState, any> = {
     namespaced: true,
     state,
     mutations,
@@ -36,4 +36,4 @@ const AuthStore: Module<AuthState, any> = {
     getters,
 };
 
-export default AuthStore;
+export default authModule;

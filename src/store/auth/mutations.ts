@@ -11,6 +11,7 @@ export type Mutations<S = AuthState> = {
 
 export const mutations: MutationTree<AuthState> & Mutations = {
     [MutationTypes.LOG_IN](state: AuthState, payload: boolean) {
+        console.log("IT WORKS");
         state.isLoggedIn = payload;
     },
 };

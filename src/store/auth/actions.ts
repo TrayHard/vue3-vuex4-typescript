@@ -3,7 +3,7 @@ import { Mutations, MutationTypes } from './mutations';
 import { AuthState, User, state } from './state';
 
 export enum ActionTypes {
-    CHECK_CREDENTIALS = 'CHECK_CREDENTIALS'
+    CHECK_CREDENTIALS = 'auth/CHECK_CREDENTIALS'
 }
 
 type AugmentedActionContext = {

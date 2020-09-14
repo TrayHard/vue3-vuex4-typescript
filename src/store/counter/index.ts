@@ -27,8 +27,7 @@ export type CounterStore = {
     };
 };
 
-//@ts-ignore
-const CounterStore: Module<CounterState, any> = {
+const counterModule: Module<CounterState, any> = {
     namespaced: true,
     state,
     mutations,
@@ -36,4 +35,4 @@ const CounterStore: Module<CounterState, any> = {
     getters,
 };
 
-export default CounterStore;
+export default counterModule;

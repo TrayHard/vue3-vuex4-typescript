@@ -1,14 +1,24 @@
 import { createStore, ModuleTree } from 'vuex';
-import auth, { AuthStore } from './auth';
-import counter, { CounterStore } from './counter';
+import auth, { AuthStore, AuthState } from './auth';
+import counter, { CounterStore, CounterState } from './counter';
 
-export type Store = AuthStore & CounterStore;
+export type State = {
+    auth: AuthState;
+    counter: CounterState;
+};
 
-const modules: ModuleTree<Store> = {
-    counter,
+const modules: ModuleTree<State> = {
     auth,
+    counter,
 };
 
 export const store = createStore({
     modules,
 });
+
+// export const store = createStore({
+//     modules: {
+//         auth: authModule,
+//         counter: counterModule
+//     }
+// });
