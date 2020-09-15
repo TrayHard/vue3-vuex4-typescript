@@ -3,12 +3,12 @@ export type User = {
     password: string;
 }
 
-export type AuthState = {
+export type IState = {
     isLoggedIn: boolean;
     user1: User;
 };
 
-export const state: AuthState = {
+export const state: IState = {
     isLoggedIn: false,
     user1: {
         name: 'John',

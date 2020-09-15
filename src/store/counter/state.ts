@@ -1,7 +1,7 @@
-export type CounterState = {
+export type IState = {
     counter: number;
 };
 
-export const state: CounterState = {
+export const state: IState = {
     counter: 0,
 };

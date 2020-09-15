@@ -1,10 +1,10 @@
 import { GetterTree, Store } from 'vuex';
-import { AuthState } from './state';
+import { IState } from './state';
 
 export type Getters = {
-    showLoggedStatus(state: AuthState): string;
+    showLoggedStatus(state: IState): string;
 };
 
-export const getters: GetterTree<AuthState, AuthState> & Getters = {
+export const getters: GetterTree<IState, IState> & Getters = {
     showLoggedStatus: (state) => state.isLoggedIn ? 'Authorized' : 'Unauthorized',
 };

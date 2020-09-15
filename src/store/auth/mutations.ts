@@ -1,16 +1,16 @@
 import { MutationTree } from 'vuex';
-import { AuthState } from './state'
+import { IState } from './state'
 
-export enum MutationTypes {
+export enum IMutations {
     LOG_IN = 'LOG_IN'
 }
 
-export type Mutations<S = AuthState> = {
-    [MutationTypes.LOG_IN](state: S, payload: boolean): void;
+export type Mutations<S = IState> = {
+    [IMutations.LOG_IN](state: S, payload: boolean): void;
 }
 
-export const mutations: MutationTree<AuthState> & Mutations = {
-    [MutationTypes.LOG_IN](state: AuthState, payload: boolean) {
+export const mutations: MutationTree<IState> & Mutations = {
+    [IMutations.LOG_IN](state: IState, payload: boolean) {
         console.log("IT WORKS");
         state.isLoggedIn = payload;
     },

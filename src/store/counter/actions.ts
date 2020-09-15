@@ -1,8 +1,8 @@
 import { ActionContext, ActionTree } from 'vuex';
-import { Mutations, MutationTypes } from './mutations';
-import { CounterState } from './state';
+import { Mutations, IMutations } from './mutations';
+import { IState } from './state';
 
-export enum ActionTypes {
+export enum IActions {
     INC_COUNTER = 'ACT_SET_COUNTER'
 }
 
@@ -11,17 +11,17 @@ type AugmentedActionContext = {
         key: K,
         payload: Parameters<Mutations[K]>[1]
     ): ReturnType<Mutations[K]>;
-} & Omit<ActionContext<CounterState, CounterState>, 'commit'>
+} & Omit<ActionContext<IState, IState>, 'commit'>
 
 export interface Actions {
-    [ActionTypes.INC_COUNTER](
+    [IActions.INC_COUNTER](
         { commit }: AugmentedActionContext,
         payload: number
     ): void;
 }
 
-export const actions: ActionTree<CounterState, CounterState> & Actions = {
-    [ActionTypes.INC_COUNTER]({ commit }, payload: number) {
-        commit(MutationTypes.INC_COUNTER, payload);
+export const actions: ActionTree<IState, IState> & Actions = {
+    [IActions.INC_COUNTER]({ commit }, payload: number) {
+        commit(IMutations.INC_COUNTER, payload);
     },
 };

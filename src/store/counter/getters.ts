@@ -1,10 +1,10 @@
 import { GetterTree } from 'vuex';
-import { CounterState } from './state';
+import { IState } from './state';
 
 export type Getters = {
-    doubleCounter(state: CounterState): number;
+    doubleCounter(state: IState): number;
 };
 
-export const getters: GetterTree<CounterState, CounterState> & Getters = {
+export const getters: GetterTree<IState, IState> & Getters = {
     doubleCounter: (state) => state.counter * 2,
 };
